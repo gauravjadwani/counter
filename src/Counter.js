@@ -1,29 +1,19 @@
+
 import React, { Component } from 'react';
 
-const counter = (state = { value: 0 }, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return { value: state.value + 1 };
-    case 'DECREMENT':
-      return { value: state.value - 1 };
-    default:
-      return state;
-  }
-}
-
 class Counter extends Component {
-  state = counter(undefined, {});
-
-  dispatch(action) {
-    this.setState(prevState => counter(prevState, action));
-  }
+  state = { value: 0 };
 
   increment = () => {
-    this.dispatch({ type: 'INCREMENT' });
+    this.setState(prevState => ({
+      value: prevState.value + 1
+    }));
   };
 
   decrement = () => {
-    this.dispatch({ type: 'DECREMENT' });
+    this.setState(prevState => ({
+      value: prevState.value - 1
+    }));
   };
 
   render() {
